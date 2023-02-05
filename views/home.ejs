@@ -1,0 +1,23 @@
+<%- include("partials/header") -%>
+<h1>Home</h1>
+<p> <%= homeStartingContent %> </p>
+<% let count=0; %>
+<% posts.forEach(function(results){ %>
+
+    <div class="input" style="display: flex;">
+        <form action="/delete" method="post">
+            <input type="checkbox" name="checkbox" value="<%= results._id %>"  onchange="this.form.submit()" >
+            <h1 style="margin-left: 10px;"><%= results.title %></h1>
+        </form>
+      </div>
+      <p><%=  results.postBody %></p>
+      <% count++; %>
+    
+<% }) %>
+
+
+
+
+
+
+<%- include("partials/footer") -%>
