@@ -5,13 +5,12 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const _ = require("lodash");
 const mongoose= require("mongoose");
-mongoose.set("strictQuery",true);
-mongoose.connect("mongodb+srv://sms-company:subham665@cluster0.hvz7bku.mongodb.net/myBlog", { useNewUrlParser: true, connectTimeoutMS: 60000 }, (err) => {
-  if(err){
-    console.log(err);
-  }else{
-    console.log("Connected to MongoDB");
-  }
+const url = "mongodb://127.0.0.1:27017/subhamkr";
+mongoose.connect(url).then(() => {
+  console.log("Connected to database");
+}).catch((e) => {
+  console.log("Error connecting to database: " + e);
+  
 });
 const blogs= new mongoose.Schema({
   title:String,
